@@ -32,7 +32,7 @@ check('password').exists()], async(req,res)=>{
         let user = await User.findOne({email},function(err,result){
             console.log(err)
         })
-        console.log(user.email)
+        console.log(user)
         if(!user){
             return res.status(400).json({errors:[{'msg':'invalid credentials'}]})
           }
