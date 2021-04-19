@@ -11,12 +11,12 @@ const secret  = config.get('jwt')
 router.post('/',[check('name','Name is required').not().isEmpty(),check('email','Email is required').isEmail(),
 check('password','minimum 6 characher length').isLength({min:6})], async(req,res)=>{
     const errors = validationResult(req);
+    console.log(req.body)
     if(!errors.isEmpty()){
          return res.status(400).json({errors:errors.array( )})
     }
 
 
-    console.log(req.body)
     const {name,email,password} = req.body
     try {
         let user =  User.findOne({email})

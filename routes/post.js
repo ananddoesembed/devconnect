@@ -5,7 +5,7 @@ const {check,validationResult} = require('express-validator')
 const User = require('../models/User')
 const Post = require('../models/Post')
 const Profile = require('../models/Profile')
-
+const checkObjectId = require('../middleware/checkObjectId')
 
 //@route  'end point api/users'
 router.post('/',[auth,[check('text','Text is required').not().isEmpty()]],async(req,res)=>{
